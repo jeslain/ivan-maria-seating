@@ -21,198 +21,76 @@ body{
   background:var(--ivory);color:var(--text);
   font-family:'Inter',system-ui,-apple-system,sans-serif;
   -webkit-font-smoothing:antialiased;min-height:100dvh;
-  /* safe area for notched phones */
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-
-/* HEADER */
 header{
   background:var(--deep);
   padding:calc(env(safe-area-inset-top,0px) + 20px) 20px 18px;
   text-align:center;position:sticky;top:0;z-index:100;
 }
-.eyebrow{
-  font-size:10px;font-weight:500;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:5px;
-}
-header h1{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:clamp(22px,6vw,30px);font-weight:300;
-  color:var(--ivory);letter-spacing:.02em;line-height:1.1;
-}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+header h1{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(22px,6vw,30px);font-weight:300;color:var(--ivory);letter-spacing:.02em;line-height:1.1}
 header h1 em{font-style:italic;font-weight:400}
 header .sub{font-size:11px;color:var(--gold-light);margin-top:3px;letter-spacing:.05em}
-
-/* SEARCH */
 .search-wrap{padding:16px 16px 0}
-.search-inner{
-  position:relative;background:#fff;border-radius:12px;
-  border:1.5px solid var(--gold-light);overflow:hidden;
-  transition:border-color .2s,box-shadow .2s;
-}
-.search-inner:focus-within{
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(201,168,76,.12);
-}
-.search-icon{
-  position:absolute;left:14px;top:50%;transform:translateY(-50%);
-  color:var(--muted);width:18px;height:18px;pointer-events:none;flex-shrink:0;
-}
-#searchInput{
-  width:100%;border:none;outline:none;
-  font-family:'Inter',system-ui,sans-serif;
-  font-size:16px;/* must be >=16px to prevent iOS auto-zoom */
-  color:var(--deep);padding:14px 40px 14px 42px;
-  background:transparent;-webkit-appearance:none;appearance:none;
-}
+.search-inner{position:relative;background:#fff;border-radius:12px;border:1.5px solid var(--gold-light);overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.search-inner:focus-within{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.12)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);width:18px;height:18px;pointer-events:none}
+#searchInput{width:100%;border:none;outline:none;font-family:'Inter',system-ui,sans-serif;font-size:16px;color:var(--deep);padding:14px 40px 14px 42px;background:transparent;-webkit-appearance:none;appearance:none}
 #searchInput::placeholder{color:var(--muted)}
-.clear-btn{
-  position:absolute;right:10px;top:50%;transform:translateY(-50%);
-  background:var(--gold-pale);border:none;border-radius:50%;
-  width:26px;height:26px;display:none;align-items:center;
-  justify-content:center;cursor:pointer;color:var(--muted);font-size:13px;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-}
+.clear-btn{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:var(--gold-pale);border:none;border-radius:50%;width:26px;height:26px;display:none;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);font-size:13px;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .clear-btn.visible{display:flex}
-
-/* HINT */
-.hint{
-  padding:10px 16px 0;font-size:12px;color:var(--muted);
-  text-align:center;letter-spacing:.02em;min-height:22px;
-}
-
-/* RESULTS */
+.hint{padding:10px 16px 0;font-size:12px;color:var(--muted);text-align:center;letter-spacing:.02em;min-height:22px}
 #results{padding:12px 16px calc(80px + env(safe-area-inset-bottom,0px))}
-
-/* IDLE */
 .idle-state{text-align:center;padding:32px 0 0}
 .idle-ring{width:64px;height:64px;margin:0 auto 14px;display:block}
-.idle-state h2{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:20px;font-weight:400;color:var(--deep);margin-bottom:6px;
-}
+.idle-state h2{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;font-weight:400;color:var(--deep);margin-bottom:6px}
 .idle-state p{font-size:13px;color:var(--muted);line-height:1.6;max-width:240px;margin:0 auto}
-
-/* NO RESULTS */
 .no-results{text-align:center;padding:32px 0 0}
 .no-results p{font-size:14px;color:var(--muted);line-height:1.6}
 .no-results strong{color:var(--text);font-weight:500}
-
-/* CARD */
-.result-card{
-  background:#fff;border-radius:14px;border:1px solid var(--border);
-  margin-bottom:10px;overflow:hidden;
-  animation:slideUp .18s ease both;
-}
+.result-card{background:#fff;border-radius:14px;border:1px solid var(--border);margin-bottom:10px;overflow:hidden;animation:slideUp .18s ease both}
 @keyframes slideUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-
 .card-top{display:flex;align-items:center;gap:12px;padding:14px 16px}
-.table-badge{
-  flex-shrink:0;width:52px;height:52px;border-radius:50%;
-  background:var(--deep);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:1px;
-}
-.table-badge .lbl{
-  font-size:7px;font-weight:500;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--gold);
-}
-.table-badge .num{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:21px;font-weight:600;color:var(--ivory);line-height:1;
-}
+.table-badge{flex-shrink:0;width:52px;height:52px;border-radius:50%;background:var(--deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+.table-badge .lbl{font-size:7px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.table-badge .num{font-family:'Cormorant Garamond',Georgia,serif;font-size:21px;font-weight:600;color:var(--ivory);line-height:1}
 .card-info{flex:1;min-width:0}
-.guest-name{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:19px;font-weight:400;color:var(--deep);
-  line-height:1.2;margin-bottom:2px;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
-}
+.guest-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:400;color:var(--deep);line-height:1.2;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .seat-desc{font-size:11px;color:var(--muted);letter-spacing:.02em}
-
-/* MAP TOGGLE */
-.map-toggle{
-  width:100%;border:none;border-top:1px solid var(--border);
-  background:var(--gold-pale);padding:11px 16px;
-  display:flex;align-items:center;justify-content:space-between;
-  cursor:pointer;
-  font-family:'Inter',system-ui,sans-serif;
-  font-size:12px;font-weight:500;color:var(--text);letter-spacing:.04em;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-  transition:background .15s;
-}
+.map-toggle{width:100%;border:none;border-top:1px solid var(--border);background:var(--gold-pale);padding:11px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:'Inter',system-ui,sans-serif;font-size:12px;font-weight:500;color:var(--text);letter-spacing:.04em;-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:background .15s}
 .map-toggle:active{background:var(--gold-light)}
 .map-toggle .chevron{transition:transform .2s;color:var(--gold);font-size:14px}
 .map-toggle.open .chevron{transform:rotate(180deg)}
-
-/* MAP PANEL */
 .map-panel{display:none;padding:14px 16px 18px;border-top:1px solid var(--border);background:#FDFCFA}
 .map-panel.open{display:block}
 .floor-map{width:100%;max-width:360px;margin:0 auto;display:block;height:auto;overflow:visible}
-
-/* TABLEMATES */
 .tablemates{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border)}
-.tm-label{
-  font-size:10px;font-weight:500;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:8px;
-}
+.tm-label{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .tm-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px 10px}
 .tm-item{font-size:12px;color:var(--text);padding:2px 0;line-height:1.4}
 .tm-item.me{color:var(--gold);font-weight:500}
-
-/* RESULTS COUNT */
-.results-count{
-  font-size:12px;color:var(--muted);
-  margin-bottom:10px;text-align:center;letter-spacing:.03em;
-}
-
-/* FOOTER */
-footer{
-  position:fixed;bottom:0;left:0;right:0;
-  background:linear-gradient(transparent,var(--ivory) 50%);
-  padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));
-  text-align:center;pointer-events:none;
-}
-footer p{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:12px;font-style:italic;color:var(--muted);
-}
-
-/* QR MODAL */
-.qr-btn{
-  display:block;margin:16px auto 0;padding:9px 20px;
-  background:transparent;border:1px solid var(--gold-light);
-  border-radius:20px;font-size:11px;font-weight:500;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
-  cursor:pointer;-webkit-tap-highlight-color:transparent;
-}
-.qr-overlay{
-  display:none;position:fixed;inset:0;background:rgba(28,23,18,.85);
-  z-index:200;align-items:center;justify-content:center;padding:20px;
-}
+.results-count{font-size:12px;color:var(--muted);margin-bottom:10px;text-align:center;letter-spacing:.03em}
+footer{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(transparent,var(--ivory) 50%);padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));text-align:center;pointer-events:none}
+footer p{font-family:'Cormorant Garamond',Georgia,serif;font-size:12px;font-style:italic;color:var(--muted)}
+.qr-btn{display:block;margin:16px auto 0;padding:9px 20px;background:transparent;border:1px solid var(--gold-light);border-radius:20px;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.qr-overlay{display:none;position:fixed;inset:0;background:rgba(28,23,18,.85);z-index:200;align-items:center;justify-content:center;padding:20px}
 .qr-overlay.open{display:flex}
-.qr-box{
-  background:var(--ivory);border-radius:16px;padding:28px 24px 20px;
-  text-align:center;max-width:280px;width:100%;
-}
-.qr-box h3{
-  font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:18px;font-weight:400;color:var(--deep);margin-bottom:4px;
-}
+.qr-box{background:var(--ivory);border-radius:16px;padding:28px 24px 20px;text-align:center;max-width:280px;width:100%}
+.qr-box h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:400;color:var(--deep);margin-bottom:4px}
 .qr-box p{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.5}
 .qr-img{width:180px;height:180px;border-radius:8px;display:block;margin:0 auto}
-.qr-url{
-  font-size:10px;color:var(--muted);margin-top:10px;
-  word-break:break-all;font-style:italic;
-}
-.qr-close{
-  margin-top:14px;background:var(--deep);color:var(--gold);
-  border:none;border-radius:8px;padding:10px 24px;
-  font-size:12px;font-weight:500;letter-spacing:.08em;cursor:pointer;
-  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
-}
-@media(prefers-reduced-motion:reduce){
-  .result-card{animation:none}
-  .map-toggle .chevron{transition:none}
+.qr-url{font-size:10px;color:var(--muted);margin-top:10px;word-break:break-all;font-style:italic}
+.qr-close{margin-top:14px;background:var(--deep);color:var(--gold);border:none;border-radius:8px;padding:10px 24px;font-size:12px;font-weight:500;letter-spacing:.08em;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+@media(prefers-reduced-motion:reduce){.result-card{animation:none}.map-toggle .chevron{transition:none}}
+
+/* ── FLOOR MAP STYLES ─────────────────────────────────── */
+.map-wrap {
+  background: #F7F4EE;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  padding: 4px;
+  overflow: hidden;
 }
 </style>
 </head>
@@ -237,16 +115,14 @@ footer p{
 </div>
 
 <p class="hint" id="hint" aria-live="polite">Search by first name, last name, or both</p>
-
 <div id="results" role="region" aria-label="Search results"></div>
-
 <button class="qr-btn" id="qrBtn" type="button">Share this page</button>
 
-<div class="qr-overlay" id="qrOverlay" role="dialog" aria-modal="true" aria-label="QR code">
+<div class="qr-overlay" id="qrOverlay" role="dialog" aria-modal="true">
   <div class="qr-box">
     <h3>Scan to open</h3>
     <p>Share with guests who need to find their seat</p>
-    <img class="qr-img" src="data:image/png;base64,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" alt="QR code for seating lookup">
+    <img class="qr-img" src="data:image/png;base64,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" alt="QR code">
     <div class="qr-url" id="qrUrlText">your-wedding-seating-url.com</div>
     <button class="qr-close" id="qrClose" type="button">Close</button>
   </div>
@@ -255,180 +131,163 @@ footer p{
 <footer><p>Maria &amp; Ivan · 05.09.2026</p></footer>
 
 <script>
-// ── GUEST DATA (all 148 guests, 15 tables) ─────────────────────────────────
 const GUESTS=[
-  // T1 — far left, nearest stage (back-left corner)
   {name:"Jimmy Cyriac",t:1},{name:"Sini Jimmy",t:1},{name:"Christina Cyriac",t:1},
   {name:"Merin Cyriac",t:1},{name:"George Vettoonickal",t:1},{name:"Smitha Francis",t:1},
   {name:"Kenneth Vettoonickal",t:1},{name:"Evan Vettoonickal",t:1},
   {name:"Agnelle Ann Vettoonickal",t:1},{name:"Nate Vettoonickal",t:1},
-  // T2 — left side, upper-middle (beside dance floor)
   {name:"Shiney John",t:2},{name:"Vince Joseph",t:2},{name:"John Thomson",t:2},
   {name:"Tessy Thomson",t:2},{name:"Sharon Vince",t:2},{name:"Ajith Rajappan",t:2},
   {name:"Parameswaran Pillai",t:2},{name:"Liby Ajith",t:2},{name:"Jomon Joy",t:2},
   {name:"Dixie Jomon",t:2},{name:"Jordan Jomon",t:2},
-  // T3 — left side, below T2
   {name:"Nimmy Dipin",t:3},{name:"Dipin Jose",t:3},{name:"Norah Dipin",t:3},
   {name:"Stessy Antony",t:3},{name:"Sean Antony",t:3},{name:"Lucas Antony",t:3},
   {name:"Stella Binoy",t:3},{name:"Blesson Antony",t:3},{name:"Nithin Jose",t:3},
   {name:"Sandra Prince",t:3},
-  // T4 — left-centre, lower (below dance floor)
   {name:"Rosamma George",t:4},{name:"Sabu George",t:4},{name:"Jeena Lalu Antony",t:4},
   {name:"Raphael Maliekal",t:4},{name:"Mary Mechery",t:4},{name:"Nisha Mechery",t:4},
   {name:"James Kuriyathan",t:4},{name:"Sijo Joseph",t:4},{name:"Manju Eldhose",t:4},
-  // T5 — far left, lower section
   {name:"Babu Varghese",t:5},{name:"Mercy Varghese",t:5},{name:"Susan Dean",t:5},
   {name:"Teffi George",t:5},{name:"Jithin George",t:5},{name:"Jayden George",t:5},
   {name:"Jonah George",t:5},{name:"Manoj Dcunha",t:5},{name:"Rashmy Dcunha",t:5},
   {name:"Elizabeth Sabin",t:5},{name:"Alan Y",t:5},
-  // T6 — centre-left, lower (below dance floor)
   {name:"Aneesh Chakko",t:6},{name:"Sonia Aneesh",t:6},{name:"Abigail Aneesh",t:6},
   {name:"Hira Hayden",t:6},{name:"Croydon Hayden",t:6},{name:"Sholes Hayden",t:6},
   {name:"Leena Sunesh",t:6},{name:"Sunesh Joseph",t:6},{name:"Bency Shajan",t:6},
   {name:"Shajan Mookken",t:6},
-  // T7 — bottom-centre, near stage left (head/sweetheart area)
   {name:"Alan Mathew",t:7},{name:"Alfred Kannampuzha",t:7},{name:"Jibin Abraham",t:7},
   {name:"Allen Chazhoor",t:7},{name:"Angus Chik",t:7},{name:"Vincent Vargas",t:7},
   {name:"Kevin Sajan",t:7},{name:"Maria Sajan",t:7},{name:"Ivan Theratil",t:7},
-  // T8 — right side, lower
   {name:"Anumita Jain",t:8},{name:"Sanjna Gogna",t:8},{name:"Lauren Sol",t:8},
   {name:"Sricherry Nannapaneni",t:8},{name:"Abiya Mukalel",t:8},{name:"Kevin Mukalel",t:8},
   {name:"Teena Tom",t:8},{name:"Alina Sajo",t:8},{name:"Jeslin Tom",t:8},
   {name:"Edwin Santhosh",t:8},
-  // T9 — centre, below dance floor
   {name:"Roshini George",t:9},{name:"Sahil Maliekal",t:9},{name:"Angel Lalu",t:9},
   {name:"Taylor Cove",t:9},{name:"Dewlyn Hayden",t:9},{name:"Ashley Antony",t:9},
   {name:"Angela James",t:9},{name:"Anabella Lalu",t:9},{name:"Andrea Lalu",t:9},
   {name:"Rhea Maliekal",t:9},
-  // T10 — right side, middle
   {name:"Shibu Kannampuzha",t:10},{name:"Varghese Kannampuzha",t:10},{name:"Binoy Paul",t:10},
   {name:"Nitha Binoy",t:10},{name:"Eva Rose Palatty",t:10},{name:"Nasr Mohammed",t:10},
   {name:"Sabitha Mohammed",t:10},{name:"Afrida Mohammed",t:10},{name:"Sindhu George",t:10},
   {name:"George Thottiyil",t:10},
-  // T11 — centre-right, beside dance floor
   {name:"Ignatius Theratil",t:11},{name:"Leenat Palatty",t:11},{name:"Irene Theratil",t:11},
   {name:"Liliane Abraham",t:11},{name:"Kevin Abraham",t:11},{name:"Lucia Abraham",t:11},
   {name:"Maria Akkara",t:11},{name:"Joseph Akkara",t:11},{name:"Fr. Jaison Perumaden",t:11},
   {name:"Ivana Tom",t:11},{name:"Jose Akkara",t:11},
-  // T12 — far right, middle
   {name:"Ann Maria Kurian",t:12},{name:"Regis Joseph",t:12},{name:"Aneesh Joseph",t:12},
   {name:"Feby Joseph",t:12},{name:"Kevin Michael",t:12},{name:"Christine Michael",t:12},
   {name:"Dylan Michael",t:12},{name:"Joanna Michael",t:12},{name:"Michael Purathayil",t:12},
   {name:"Joseph Vempeny",t:12},{name:"Benjamin Michael",t:12},
-  // T13 — centre-right, near stage
   {name:"Sheeja Joseph",t:13},{name:"Pious Joseph",t:13},{name:"Molly Abraham",t:13},
   {name:"Joy Abraham",t:13},{name:"Sindhu Michael",t:13},{name:"Joseph Michael",t:13},
   {name:"Vincent Chazhoor",t:13},{name:"Jancy Pallissery",t:13},
   {name:"Xaviour Puthuparampil",t:13},{name:"Jolly Puthuparampil",t:13},
-  // T14 — far right, nearest stage (back-right corner)
   {name:"Sona Thottiyil",t:14},{name:"Sneha Thottiyil",t:14},{name:"Sandra Thottiyil",t:14},
   {name:"Ashma Saldanha",t:14},{name:"Flavian D'Souza",t:14},{name:"Rafalea Flavian",t:14},
   {name:"Daniela Flavian",t:14},{name:"Rosemary Akkara",t:14},{name:"Lilly Akkara",t:14},
-  // T15 — centre, lower-middle area
   {name:"Anat Antony",t:15},{name:"Noah Vince",t:15},{name:"Nylah Vince",t:15},
   {name:"Nicholas Vince",t:15},{name:"Aidan John",t:15},{name:"Niranjan Thomson",t:15},
   {name:"Harry Ajith",t:15},{name:"Manuela Dcunha",t:15},{name:"Austin Sunesh",t:15},
   {name:"Ann Marie Sunesh",t:15},
 ];
 
-// Group by table
 const TABLES={};
 GUESTS.forEach(g=>{if(!TABLES[g.t])TABLES[g.t]=[];TABLES[g.t].push(g.name)});
 
-// ── TABLE POSITIONS (SVG viewBox 0 0 300 340)
-// Stage at top-centre. Dance floor centre.
-// Carefully re-mapped from PDF floor plan visual.
-// Left side: T1(back-left), T2(mid-left upper), T3(mid-left lower), T4(lower-left centre), T5(far left lower), T6(lower-left near floor)
-// Right side: T14(back-right), T13(mid-right upper), T12(far right mid), T10(right mid), T11(centre-right), T8(right lower)
-// Centre/bottom: T7(stage-left cluster), T9(centre below floor), T15(centre lower)
+// Exact positions derived from PDF pixel coordinates
 const TPOS={
-  1:{x:38, y:42},   // far left, near stage
-  2:{x:52, y:108},  // left, upper-middle
-  3:{x:40, y:158},  // left, mid-lower
-  4:{x:68, y:210},  // left-centre, below dance floor
-  5:{x:38, y:255},  // far left, lower
-  6:{x:78, y:258},  // centre-left, lower
-  7:{x:110,y:310},  // centre-left bottom (near stage side)
-  8:{x:240,y:255},  // right side, lower
-  9:{x:158,y:258},  // centre, below dance floor
-  10:{x:258,y:158}, // right side, mid
-  11:{x:218,y:208}, // centre-right, beside dance floor
-  12:{x:262,y:108}, // far right, middle
-  13:{x:222,y:108}, // centre-right, upper (near stage)
-  14:{x:262,y:42},  // far right, near stage
-  15:{x:170,y:310}, // centre, lower
+  1:{x:40,y:71},2:{x:69,y:115},3:{x:40,y:167},
+  4:{x:87,y:192},5:{x:41,y:238},6:{x:95,y:247},
+  7:{x:40,y:310},8:{x:255,y:289},9:{x:179,y:248},
+  10:{x:234,y:228},11:{x:185,y:187},12:{x:249,y:169},
+  13:{x:206,y:129},14:{x:241,y:74},15:{x:87,y:303},
 };
 
-// ── ACCURATE LOCATION DESCRIPTIONS ─────────────────────────────────────────
 const TDESC={
   1:"Far left, back corner near stage",
   2:"Left side, upper section",
   3:"Left side, middle section",
-  4:"Left-centre, below the dance floor",
+  4:"Centre-left, below the dance floor",
   5:"Far left, lower section",
   6:"Centre-left, lower section",
-  7:"Centre-left, front near the stage",
+  7:"Far left, front near the stage",
   8:"Right side, lower section",
-  9:"Centre, below the dance floor",
+  9:"Centre, lower section",
   10:"Right side, middle section",
   11:"Centre-right, beside the dance floor",
   12:"Far right, middle section",
-  13:"Centre-right, upper section near stage",
+  13:"Centre-right, upper section",
   14:"Far right, back corner near stage",
-  15:"Centre, lower-middle area",
+  15:"Centre, lower section",
 };
 
-// ── BUILD SVG MAP ────────────────────────────────────────────────────────────
 function buildMap(hi){
-  const W=300,H=340;
-  let s=`<svg class="floor-map" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Floor plan showing table ${hi}">`;
-  // Room
-  s+=`<rect x="1" y="1" width="${W-2}" height="${H-2}" rx="6" fill="#FDFCF8" stroke="#E8E0D4" stroke-width="1"/>`;
-  // Stage (top centre)
-  s+=`<rect x="98" y="6" width="104" height="28" rx="3" fill="#1C1712" opacity=".9"/>`;
-  s+=`<text x="150" y="23" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" font-weight="500" fill="#C9A84C" letter-spacing=".12em">STAGE</text>`;
-  // Dance floor (centre of room)
-  s+=`<rect x="90" y="110" width="120" height="90" rx="3" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4 3" opacity=".4"/>`;
-  s+=`<text x="150" y="158" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="8" fill="#C9A84C" opacity=".6" letter-spacing=".08em">DANCE FLOOR</text>`;
+  // SVG: 300 x 340. Stage top-centre. Dance floor centre-upper.
+  // All table positions come from actual PDF coordinate mapping.
+  let s=`<svg class="floor-map" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">`;
 
+  // Room background
+  s+=`<rect x="0" y="0" width="300" height="340" rx="8" fill="#F7F4EE"/>`;
+
+  // Subtle grid lines for depth
+  for(let x=0;x<=300;x+=50)
+    s+=`<line x1="${x}" y1="0" x2="${x}" y2="340" stroke="#E8E0D4" stroke-width=".4" opacity=".5"/>`;
+  for(let y=0;y<=340;y+=50)
+    s+=`<line x1="0" y1="${y}" x2="300" y2="${y}" stroke="#E8E0D4" stroke-width=".4" opacity=".5"/>`;
+
+  // Stage — top centre (tables 1 & 14 are back corners near it)
+  s+=`<rect x="100" y="4" width="100" height="26" rx="4" fill="#1C1712"/>`;
+  s+=`<text x="150" y="20" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="9" font-weight="500" fill="#C9A84C" letter-spacing=".15em">STAGE</text>`;
+
+  // Dance floor — centre of room (between T11/T13 right and T4/T6 left, y≈155-215)
+  s+=`<rect x="110" y="88" width="80" height="60" rx="4" fill="none" stroke="#C9A84C" stroke-width="1.2" stroke-dasharray="5 3" opacity=".5"/>`;
+  s+=`<text x="150" y="121" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="7.5" fill="#C9A84C" opacity=".7" letter-spacing=".1em">DANCE</text>`;
+  s+=`<text x="150" y="133" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="7.5" fill="#C9A84C" opacity=".7" letter-spacing=".1em">FLOOR</text>`;
+
+  // Draw all tables
   for(const[n,p] of Object.entries(TPOS)){
-    const num=parseInt(n),isHi=num===hi;
-    const cx=p.x,cy=p.y,r=isHi?17:12;
+    const num=parseInt(n), isHi=num===hi;
+    const cx=p.x, cy=p.y;
+
     if(isHi){
-      s+=`<circle cx="${cx}" cy="${cy}" r="26" fill="#C9A84C" opacity=".12"/>`;
-      s+=`<circle cx="${cx}" cy="${cy}" r="21" fill="#C9A84C" opacity=".12"/>`;
-    }
-    s+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${isHi?'#C9A84C':'#2A2420'}" stroke="${isHi?'#E8D5A3':'#4A3D35'}" stroke-width="${isHi?2:1}"/>`;
-    s+=`<text x="${cx}" y="${cy+4}" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="${isHi?13:10}" font-weight="${isHi?'600':'400'}" fill="${isHi?'#1C1712':'#FAF8F4'}">${num}</text>`;
-    if(isHi){
-      s+=`<rect x="${cx-20}" y="${cy+20}" width="40" height="13" rx="3" fill="#C9A84C"/>`;
-      s+=`<text x="${cx}" y="${cy+29}" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="7" font-weight="600" fill="#1C1712" letter-spacing=".1em">YOUR TABLE</text>`;
+      // Outer glow rings
+      s+=`<circle cx="${cx}" cy="${cy}" r="23" fill="#C9A84C" opacity=".1"/>`;
+      s+=`<circle cx="${cx}" cy="${cy}" r="18" fill="#C9A84C" opacity=".15"/>`;
+      // Table circle
+      s+=`<circle cx="${cx}" cy="${cy}" r="14" fill="#C9A84C" stroke="#E8D5A3" stroke-width="2"/>`;
+      // Number
+      s+=`<text x="${cx}" y="${cy+5}" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="14" font-weight="600" fill="#1C1712">${num}</text>`;
+      // "YOUR TABLE" pill below
+      s+=`<rect x="${cx-22}" y="${cy+17}" width="44" height="12" rx="6" fill="#C9A84C"/>`;
+      s+=`<text x="${cx}" y="${cy+26}" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="6.5" font-weight="600" fill="#1C1712" letter-spacing=".1em">YOUR TABLE</text>`;
+    } else {
+      // Normal table
+      s+=`<circle cx="${cx}" cy="${cy}" r="11" fill="#2A2420" stroke="#4A3D35" stroke-width="1"/>`;
+      s+=`<text x="${cx}" y="${cy+4}" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="10" fill="#FAF8F4">${num}</text>`;
     }
   }
+
+  // Compass / orientation hint
+  s+=`<text x="286" y="330" text-anchor="end" font-family="Inter,system-ui,sans-serif" font-size="7" fill="#8A7B6E" opacity=".6">entrance ↓</text>`;
+
   s+=`</svg>`;
   return s;
 }
 
-// ── FUZZY SEARCH ─────────────────────────────────────────────────────────────
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9 ]/g,'').trim()}
-
-function score(query,target){
-  const q=norm(query),t=norm(target);
+function score(q,t){
+  q=norm(q);t=norm(t);
   if(!q)return 0;
-  if(t===q)return 100;
-  if(t.startsWith(q))return 90;
-  if(t.includes(q))return 80;
-  const qt=q.split(' ').filter(x=>x.length>1);
-  const tt=t.split(' ').filter(Boolean);
-  let hits=0;
-  for(const a of qt){for(const b of tt){if(b.startsWith(a)||b.includes(a)){hits++;break}}}
-  if(hits===qt.length&&qt.length>0)return 70;
-  if(hits>0)return 40+(hits/Math.max(qt.length,1))*20;
-  if(tt.some(b=>b.startsWith(q.split(' ')[0]||'')))return 35;
+  if(t===q)return 100;if(t.startsWith(q))return 90;if(t.includes(q))return 80;
+  const qt=q.split(' ').filter(x=>x.length>1),tt=t.split(' ').filter(Boolean);
+  let h=0;
+  for(const a of qt){for(const b of tt){if(b.startsWith(a)||b.includes(a)){h++;break}}}
+  if(h===qt.length&&qt.length>0)return 70;
+  if(h>0)return 40+(h/Math.max(qt.length,1))*20;
+  if(tt.some(b=>b.startsWith((q.split(' ')[0]||''))))return 35;
   return 0;
 }
 
-// ── RENDER ───────────────────────────────────────────────────────────────────
 const inp=document.getElementById('searchInput');
 const clr=document.getElementById('clearBtn');
 const res=document.getElementById('results');
@@ -439,75 +298,50 @@ function render(q){
   if(!q.trim()){
     hint.textContent='Search by first name, last name, or both';
     res.innerHTML=`<div class="idle-state">
-      <svg class="idle-ring" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-        <circle cx="32" cy="32" r="26" stroke="#C9A84C" stroke-width="1.2" opacity=".4"/>
-        <circle cx="32" cy="32" r="18" stroke="#C9A84C" stroke-width=".8" opacity=".25"/>
-        <text x="32" y="37" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="17" fill="#C9A84C" opacity=".65">♡</text>
-      </svg>
-      <h2>Welcome</h2>
-      <p>Type your name above to find your table tonight.</p>
-    </div>`;
+      <svg class="idle-ring" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="26" stroke="#C9A84C" stroke-width="1.2" opacity=".4"/><circle cx="32" cy="32" r="18" stroke="#C9A84C" stroke-width=".8" opacity=".25"/><text x="32" y="37" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="17" fill="#C9A84C" opacity=".65">♡</text></svg>
+      <h2>Welcome</h2><p>Type your name above to find your table tonight.</p></div>`;
     return;
   }
-  const hits=GUESTS.map(g=>({...g,s:score(q,g.name)}))
+  const hits=GUESTS.map(g=>{return{...g,s:score(q,g.name)}})
     .filter(g=>g.s>=35).sort((a,b)=>b.s-a.s).slice(0,5);
-
   if(!hits.length){
     hint.textContent='';
-    res.innerHTML=`<div class="no-results">
-      <p>No match for <strong>"${q.replace(/</g,'&lt;')}"</strong>.<br>Try just your first or last name.</p>
-    </div>`;
+    res.innerHTML=`<div class="no-results"><p>No match for <strong>"${q.replace(/</g,'&lt;')}"</strong>.<br>Try just your first or last name.</p></div>`;
     return;
   }
   hint.textContent='';
   let html=hits.length>1?`<p class="results-count">${hits.length} matches — tap yours</p>`:'';
   hits.forEach((g,i)=>{
     const mates=TABLES[g.t].filter(n=>n!==g.name);
-    const tmHtml=mates.map(n=>`<div class="tm-item">${n}</div>`).join('')
-      +`<div class="tm-item me">★ ${g.name}</div>`;
+    const tm=mates.map(n=>`<div class="tm-item">${n}</div>`).join('')+`<div class="tm-item me">★ ${g.name}</div>`;
     html+=`<div class="result-card" style="animation-delay:${i*.04}s">
       <div class="card-top">
         <div class="table-badge"><span class="lbl">Table</span><span class="num">${g.t}</span></div>
-        <div class="card-info">
-          <div class="guest-name">${g.name}</div>
-          <div class="seat-desc">${TDESC[g.t]}</div>
-        </div>
+        <div class="card-info"><div class="guest-name">${g.name}</div><div class="seat-desc">${TDESC[g.t]}</div></div>
       </div>
       <button class="map-toggle" type="button" onclick="toggleMap(this)">
         <span>Show on floor map</span><span class="chevron">▾</span>
       </button>
-      <div class="map-panel">${buildMap(g.t)}
-        <div class="tablemates">
-          <div class="tm-label">Your tablemates</div>
-          <div class="tm-grid">${tmHtml}</div>
-        </div>
+      <div class="map-panel">
+        <div class="map-wrap">${buildMap(g.t)}</div>
+        <div class="tablemates"><div class="tm-label">Your tablemates</div><div class="tm-grid">${tm}</div></div>
       </div>
     </div>`;
   });
   res.innerHTML=html;
 }
 
-function toggleMap(btn){
-  btn.classList.toggle('open');
-  btn.nextElementSibling.classList.toggle('open');
-}
+function toggleMap(btn){btn.classList.toggle('open');btn.nextElementSibling.classList.toggle('open');}
 
 inp.addEventListener('input',e=>render(e.target.value));
 clr.addEventListener('click',()=>{inp.value='';inp.focus();render('');});
 
-// QR modal
 const overlay=document.getElementById('qrOverlay');
 document.getElementById('qrBtn').addEventListener('click',()=>overlay.classList.add('open'));
 document.getElementById('qrClose').addEventListener('click',()=>overlay.classList.remove('open'));
 overlay.addEventListener('click',e=>{if(e.target===overlay)overlay.classList.remove('open');});
-
-// Update QR URL display with actual page URL
-const urlDisplay=document.getElementById('qrUrlText');
-if(location.href&&!location.href.includes('file://')){
-  urlDisplay.textContent=location.href.replace(/^https?:\/\//,'');
-}
-
-// Initial render
+const urlEl=document.getElementById('qrUrlText');
+if(location.href&&!location.href.includes('file://'))urlEl.textContent=location.href.replace(/^https?:\/\//,'');
 render('');
 </script>
 </body>
